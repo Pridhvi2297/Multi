@@ -1,6 +1,8 @@
 # Multi
 CIS 657 Final Project
 
+Project Presentation slides: https://docs.google.com/presentation/d/1x1QM8ekuNS7n8TEHHj4kvRoCXNCMzdDS/edit?usp=drive_link&ouid=105778005155636245055&rtpof=true&sd=true
+
 expo link https://expo.dev/@prudhvi2297/multi?serviceType=classic&distribution=expo-go
 
 installing: exp://exp.host/@prudhvi2297/multi?release-channel=default
