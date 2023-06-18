@@ -9,6 +9,11 @@ import SignUpScreen from './screens/SignUpScreen';
 import HomeScreen from './screens/HomeScreen';
 import AddChatScreen from './screens/AddChatScreen';
 import ChatScreen from './screens/ChatScreen';
+import MainScreen from './screens/MainScreen';
+import CalculatorScreen from './screens/CalculatorScreen';
+import NotepadScreen from './screens/NotepadScreen';
+import CalendarScreen from './screens/CalendarScreen';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -29,6 +34,10 @@ export default function App() {
         <Stack.Screen name='Home' component={HomeScreen} />
         <Stack.Screen name='AddChat' component={AddChatScreen} />
         <Stack.Screen name='Chat' component={ChatScreen} />
+        <Stack.Screen name='Main' component={MainScreen} />
+        <Stack.Screen name='Calculator' component={CalculatorScreen} />
+        <Stack.Screen name='Notepad' component={NotepadScreen} />
+        <Stack.Screen name='Calendar' component={CalendarScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

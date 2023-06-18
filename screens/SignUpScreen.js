@@ -4,12 +4,14 @@ import { Button, Input, Text } from "react-native-elements";
 import { StatusBar } from "expo-status-bar";
 import { auth } from "../firebase";
 import { createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import HomeScreen from "./HomeScreen";
+import { Avatar } from "react-native-elements";
 
 const SignUpScreen = ({ navigation }) => {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [imageUrl, setImageUrl] = useState('');
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [imageUrl, setImageUrl] = useState("");
     const [user, setUser] = useState(null);
 
     useLayoutEffect(() => {
@@ -23,7 +25,7 @@ const SignUpScreen = ({ navigation }) => {
             setUser(user);
         });
 
-        return () => unsubscribe();
+        return unsubscribe;
     }, []);
 
     const signUp = () => {
@@ -32,15 +34,19 @@ const SignUpScreen = ({ navigation }) => {
                 const user = userCredential.user;
                 user.updateProfile({
                     displayName: name,
-                    photoURL: imageUrl || 'https://upload.wikimedia.org/wikipedia/commons/2/24/Missing_avatar.svg',
+                    photoURL:
+                        imageUrl ||
+                        "https://upload.wikimedia.org/wikipedia/commons/2/24/Missing_avatar.svg",
                 });
+
+                setUser(user);
             })
-            .catch((error) => alert(error.message));
+            .catch((error) => {
+                console.log("Sign Up Error:", error);
+                alert(error.message);
+            });
     };
 
-    if (user) {
-        return <HomeScreen />;
-    }
 
     return (
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
@@ -52,26 +58,26 @@ const SignUpScreen = ({ navigation }) => {
                 <Input
                     placeholder="Full Name"
                     autoFocus
-                    type='text'
+                    type="text"
                     value={name}
                     onChangeText={(text) => setName(text)}
                 />
                 <Input
                     placeholder="Email"
-                    type='email'
+                    type="email"
                     value={email}
                     onChangeText={(text) => setEmail(text)}
                 />
                 <Input
                     placeholder="Password"
-                    type='password'
+                    type="password"
                     secureTextEntry
                     value={password}
                     onChangeText={(text) => setPassword(text)}
                 />
                 <Input
                     placeholder="Avatar URL (Optional)"
-                    type='text'
+                    type="text"
                     value={imageUrl}
                     onChangeText={(text) => setImageUrl(text)}
                     onSubmitEditing={signUp}
@@ -97,7 +103,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         padding: 10,
-        backgroundColor: "White",
+        backgroundColor: "white",
     },
     inputContainer: {
         width: 300,
