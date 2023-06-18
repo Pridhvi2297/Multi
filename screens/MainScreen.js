@@ -19,10 +19,6 @@ const MainScreen = () => {
 
     useLayoutEffect(() => {
         navigation.setOptions({
-            title: "Chat Application",
-            headerStyle: { backgroundColor: "#49c7c9" },
-            headerTitleStyle: { color: "black" },
-            headerTintColor: "black",
             headerLeft: () => (
                 <View style={{ marginLeft: 20 }}>
                     <TouchableOpacity onPress={signOutUser} activeOpacity={0.5}>
