@@ -13,7 +13,10 @@ const MainScreen = () => {
     };
     const signOutUser = () => {
         auth.signOut().then(() => {
-            navigation.replace("Login");
+            navigation.reset({
+                index: 0,
+                routes: [{ name: 'Login' }],
+            });
         });
     };
 
@@ -25,7 +28,7 @@ const MainScreen = () => {
                         <Avatar
                             size={50}
                             rounded
-                            icon={{ name: "home", type: "font-awesome" }}
+                            icon={{ name: "sign-out", type: "font-awesome" }}
                             activeOpacity={0.7}
                             containerStyle={{ flex: 5, marginRight: 20 }}
                         />
